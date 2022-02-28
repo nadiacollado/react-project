@@ -1,7 +1,11 @@
+import Header from "./Header";
+import Body from "./Body";
+
 function GeneApp() {
   return (
     <div>
-      <p>Hello Nadia!</p>
+      <Header />
+      <Body />
     </div>
   );
 }
