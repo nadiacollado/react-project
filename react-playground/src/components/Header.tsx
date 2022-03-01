@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
-import MainLogo from "./main-logo.svg";
-import MenuIcon from "./menu-icon.svg";
+import MainLogo from "../images/main-logo.svg";
+import MenuIcon from "../images/menu-icon.svg";
 
 const HeaderWrapper = styled.div`
   padding-top: 1.5em;
