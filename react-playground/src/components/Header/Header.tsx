@@ -1,43 +1,41 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import MainLogo from "../../images/main-logo.svg";
 import MenuIcon from "../../images/menu-icon.svg";
-import { HeaderWrapper, DropdownList, MenuItem } from "./Header.styles";
+import { HeaderStyled, DropdownStyled, MenuItemStyled } from "./Header.styles";
 
-const menuItems = [
-  "Home",
-  "My Results",
-  "Health Profile",
-  "Community",
-  "Resources",
-  "Settings",
-  "Log out",
-];
+export interface HeaderProps {
+  menuItems: String[];
+}
 
-function Header() {
+const Header: FC<HeaderProps> = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggling = () => setIsOpen(!isOpen);
 
-  const onItemClicked = (value: string) => () => {
+  const onItemClicked = (value: String) => () => {
     setIsOpen(false);
   };
 
   return (
     <div className="Header">
-      <HeaderWrapper>
+      <HeaderStyled>
         <a href="http://localhost:3000">
           <img src={MainLogo} alt="Main Logo" />
         </a>
         <img onClick={toggling} src={MenuIcon} alt="Menu Icon" />
-      </HeaderWrapper>
+      </HeaderStyled>
       {isOpen && (
-        <DropdownList>
-          {menuItems.map((item) => {
-            return <MenuItem onClick={onItemClicked(item)}>{item}</MenuItem>;
+        <DropdownStyled>
+          {props.menuItems.map((item) => {
+            return (
+              <MenuItemStyled onClick={onItemClicked(item)}>
+                {item}
+              </MenuItemStyled>
+            );
           })}
-        </DropdownList>
+        </DropdownStyled>
       )}
     </div>
   );
-}
+};
 
 export default Header;

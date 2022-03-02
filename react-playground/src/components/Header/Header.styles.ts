@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HeaderWrapper = styled.div`
+export const HeaderStyled = styled.div`
   padding-top: 1.5em;
   padding-bottom: 1.5em;
   padding-right: 2.5em;
@@ -13,7 +13,7 @@ export const HeaderWrapper = styled.div`
     inset 0px -2.5px 0px #d5d5d3;
 `;
 
-export const DropdownList = styled("ul")`
+export const DropdownStyled = styled("ul")`
   display: flex;
   flex-direction: column;
   padding: 16px;
@@ -26,7 +26,7 @@ export const DropdownList = styled("ul")`
   border-radius: 8px;
 `;
 
-export const MenuItem = styled("li")`
+export const MenuItemStyled = styled("li")`
   list-style: none;
   color: #1a1a19;
   font-family: "Poppins", sans-serif;
