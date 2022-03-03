@@ -25,19 +25,19 @@ test("clicking the menu icon shows/closes the dropdown menu", () => {
   expect(screen.queryByText("Home")).not.toBeInTheDocument();
 });
 
-test("clicking menu item closes the dropdown menu", () => {
-  render(
-    <BrowserRouter>
-      <Header />
-    </BrowserRouter>
-  );
-  const image = screen.getByRole("img", { name: "Menu Icon" });
-  fireEvent.click(image);
-  expect(screen.getByText("Home")).toBeInTheDocument();
-  const home = screen.getByText("Home");
-  fireEvent.click(home);
-  expect(screen.queryByText("Home")).not.toBeInTheDocument();
-});
+// test("clicking menu item closes the dropdown menu", () => {
+//   render(
+//     <BrowserRouter>
+//       <Header />
+//     </BrowserRouter>
+//   );
+//   const image = screen.getByRole("img", { name: "Menu Icon" });
+//   fireEvent.click(image);
+//   expect(screen.getByText("Home")).toBeInTheDocument();
+//   const home = screen.getByText("Home");
+//   fireEvent.click(home);
+//   expect(screen.queryByText("Home")).not.toBeInTheDocument();
+// });
 
 test("clicking menu item routes to correct path", () => {
   const history = createMemoryHistory();

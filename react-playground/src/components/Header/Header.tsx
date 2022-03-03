@@ -1,8 +1,9 @@
-import { FC, useState } from "react";
+import { FC, useState, useLayoutEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import MainLogo from "../../images/main-logo.svg";
 import MenuIcon from "../../images/menu-icon.svg";
-import { HeaderStyled, DropdownStyled, MenuItemStyled } from "./Header.styles";
+import { HeaderStyled, MenuStyled } from "./Header.styles";
+import Menu from "../Menu";
 
 const menu = [
   { name: "Home", route: "/" },
@@ -18,9 +19,33 @@ const Header: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggling = () => setIsOpen(!isOpen);
 
-  const onItemClicked = (value: Object) => () => {
+  const onItemClicked = () => {
     setIsOpen(false);
   };
+
+  const element = useRef<HTMLDivElement>(null);
+
+  const handleClick = useCallback((e: MouseEvent) => {
+    console.log("in ClickOutside");
+    console.log(element.current);
+    console.log("TARGET", e.target);
+    console.log(
+      "CONDITION",
+      element.current?.contains(e.target as HTMLElement)
+    );
+    if (element.current && element.current.contains(e.target as HTMLElement)) {
+      console.log("inside conditional");
+      return;
+    }
+    setIsOpen(false);
+  }, []);
+
+  useLayoutEffect(() => {
+    document.addEventListener("click", handleClick);
+    return () => {
+      document.removeEventListener("click", handleClick);
+    };
+  }, [handleClick]);
 
   return (
     <div className="Header">
@@ -28,24 +53,13 @@ const Header: FC = () => {
         <Link to="/">
           <img src={MainLogo} alt="Main Logo" />
         </Link>
-        <img onClick={toggling} src={MenuIcon} alt="Menu Icon" />
+        <MenuStyled>
+          <div className="Menu" ref={element}>
+            <img onClick={toggling} src={MenuIcon} alt="Menu Icon" />
+            {isOpen && <Menu onItemClicked={onItemClicked} />}
+          </div>
+        </MenuStyled>
       </HeaderStyled>
-      {isOpen && (
-        <DropdownStyled>
-          {menu.map((item, index) => {
-            return (
-              <MenuItemStyled onClick={onItemClicked(item)} key={index}>
-                <Link
-                  to={`${item.route}`}
-                  style={{ color: "inherit", textDecoration: "inherit" }}
-                >
-                  {item.name}
-                </Link>
-              </MenuItemStyled>
-            );
-          })}
-        </DropdownStyled>
-      )}
     </div>
   );
 };
