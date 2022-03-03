@@ -4,9 +4,7 @@ import Home from "../../Pages/Home";
 import Results from "../../Pages/Results";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
-export interface AppProps {}
-
-const App: FC<AppProps> = (props) => {
+const App: FC = () => {
   return (
     <BrowserRouter>
       <div>

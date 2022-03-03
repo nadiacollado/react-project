@@ -1,8 +1,6 @@
 import { FC } from "react";
 
-export interface ResultsProps {}
-
-const Results: FC<ResultsProps> = (props) => {
+const Results: FC = () => {
   return <h1>This is the results page</h1>;
 };
 

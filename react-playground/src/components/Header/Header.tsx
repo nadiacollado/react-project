@@ -4,8 +4,6 @@ import MainLogo from "../../images/main-logo.svg";
 import MenuIcon from "../../images/menu-icon.svg";
 import { HeaderStyled, DropdownStyled, MenuItemStyled } from "./Header.styles";
 
-export interface HeaderProps {}
-
 const menu = [
   { name: "Home", route: "/" },
   { name: "My Results", route: "/results" },
@@ -16,7 +14,7 @@ const menu = [
   { name: "Log out", route: "/logout" },
 ];
 
-const Header: FC<HeaderProps> = (props) => {
+const Header: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggling = () => setIsOpen(!isOpen);
 
