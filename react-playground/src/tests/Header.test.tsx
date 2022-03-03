@@ -1,23 +1,22 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Header } from "../components/Header";
-import { BrowserRouter as Router } from "react-router-dom";
-
-const menu = ["Home", "Results"];
+import { Router, BrowserRouter } from "react-router-dom";
+const { createMemoryHistory } = require("history");
 
 test("renders a message", () => {
   render(
-    <Router>
+    <BrowserRouter>
       <Header />
-    </Router>
+    </BrowserRouter>
   );
   expect(screen.getByAltText("Main Logo")).toBeInTheDocument();
 });
 
 test("clicking the menu icon shows/closes the dropdown menu", () => {
   render(
-    <Router>
+    <BrowserRouter>
       <Header />
-    </Router>
+    </BrowserRouter>
   );
   const image = screen.getByRole("img", { name: "Menu Icon" });
   fireEvent.click(image);
@@ -28,9 +27,9 @@ test("clicking the menu icon shows/closes the dropdown menu", () => {
 
 test("clicking menu item closes the dropdown menu", () => {
   render(
-    <Router>
+    <BrowserRouter>
       <Header />
-    </Router>
+    </BrowserRouter>
   );
   const image = screen.getByRole("img", { name: "Menu Icon" });
   fireEvent.click(image);
@@ -38,4 +37,19 @@ test("clicking menu item closes the dropdown menu", () => {
   const home = screen.getByText("Home");
   fireEvent.click(home);
   expect(screen.queryByText("Home")).not.toBeInTheDocument();
+});
+
+test("clicking menu item routes to correct path", () => {
+  const history = createMemoryHistory();
+  render(
+    <Router location={history.location} navigator={history}>
+      <Header />
+    </Router>
+  );
+
+  const image = screen.getByRole("img", { name: "Menu Icon" });
+  fireEvent.click(image);
+  expect(screen.getByText("Home")).toBeInTheDocument();
+  fireEvent.click(screen.getByText("My Results"));
+  expect(history.location.pathname).toEqual("/results");
 });

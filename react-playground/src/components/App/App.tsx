@@ -2,13 +2,13 @@ import { Header } from "../Header";
 import { FC } from "react";
 import Home from "../../Pages/Home";
 import Results from "../../Pages/Results";
-import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 export interface AppProps {}
 
 const App: FC<AppProps> = (props) => {
   return (
-    <Router>
+    <BrowserRouter>
       <div>
         <Header />
       </div>
@@ -16,7 +16,7 @@ const App: FC<AppProps> = (props) => {
         <Route path="/" element={<Home />} />
         <Route path="/results" element={<Results />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 };
 
