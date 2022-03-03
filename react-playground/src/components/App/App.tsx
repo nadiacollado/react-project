@@ -1,25 +1,23 @@
 import { Header } from "../Header";
+import { FC } from "react";
+import Home from "../../Pages/Home";
+import Results from "../../Pages/Results";
+import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 
-const menuItems = [
-  "Home",
-  "My Results",
-  "Health Profile",
-  "Community",
-  "Resources",
-  "Settings",
-  "Log out",
-];
-interface AppProps {
-  bodyText: string;
-}
+export interface AppProps {}
 
-function App({ bodyText }: AppProps) {
+const App: FC<AppProps> = (props) => {
   return (
-    <div>
-      <Header menuItems={menuItems} />
-      {bodyText}
-    </div>
+    <Router>
+      <div>
+        <Header />
+      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/results" element={<Results />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
