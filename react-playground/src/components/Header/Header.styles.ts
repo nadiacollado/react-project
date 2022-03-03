@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import MenuItem from "../MenuItem";
+import { MenuItem } from "../MenuItem";
 
 export const HeaderStyled = styled.div`
   padding-top: 1.5em;
@@ -13,7 +13,7 @@ export const HeaderStyled = styled.div`
     inset 0px -2.5px 0px #d5d5d3;
 `;
 
-export const DropdownStyled = styled("ul")`
+export const MenuStyled = styled("ul")`
   display: flex;
   flex-direction: column;
   padding: 16px;
@@ -39,6 +39,6 @@ export const MenuItemStyled = styled(MenuItem)`
   margin: 5px 45px 0px 15px;
 `;
 
-export const MenuStyled = styled("div")`
+export const MenuIconStyled = styled("div")`
   padding-top: 1em;
 `;
