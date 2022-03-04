@@ -7,9 +7,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 const App: FC = () => {
   return (
     <BrowserRouter>
-      <div>
-        <Header />
-      </div>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/results" element={<Results />} />

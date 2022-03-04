@@ -1,10 +1,10 @@
 import styled from "styled-components";
+import { MenuItem } from "../MenuItem";
 
 export const HeaderStyled = styled.div`
   padding-top: 1.5em;
   padding-bottom: 1.5em;
   padding-right: 2.5em;
-  color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -13,7 +13,7 @@ export const HeaderStyled = styled.div`
     inset 0px -2.5px 0px #d5d5d3;
 `;
 
-export const DropdownStyled = styled("ul")`
+export const MenuStyled = styled.ul`
   display: flex;
   flex-direction: column;
   padding: 16px;
@@ -26,7 +26,7 @@ export const DropdownStyled = styled("ul")`
   border-radius: 8px;
 `;
 
-export const MenuItemStyled = styled("li")`
+export const MenuItemStyled = styled.li`
   list-style: none;
   color: #1a1a19;
   font-family: "Poppins", sans-serif;
@@ -37,4 +37,8 @@ export const MenuItemStyled = styled("li")`
   order: 1;
   flex-grow: 0;
   margin: 5px 45px 0px 15px;
+`;
+
+export const MenuIconStyled = styled.div`
+  padding-top: 1em;
 `;
