@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { MenuStyled } from "../Header/Header.styles";
+import { MenuStyled } from "./Menu.styles";
 import { MenuItem } from "../MenuItem";
 
 const menu = [

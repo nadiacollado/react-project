@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { MenuItemStyled } from "../Header/Header.styles";
+import { MenuItemStyled } from "./MenuItem.styles";
 
 export type PropMenuItem = {
   name: String;

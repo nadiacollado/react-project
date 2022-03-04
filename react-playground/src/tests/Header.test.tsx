@@ -12,7 +12,7 @@ test("renders a message", () => {
   expect(screen.getByAltText("Main Logo")).toBeInTheDocument();
 });
 
-test("clicking the menu icon shows/closes the dropdown menu", () => {
+test("clicking menu icon opens/closes the dropdown menu", () => {
   render(
     <BrowserRouter>
       <Header />
