@@ -1,4 +1,4 @@
-import { FC, useState, useLayoutEffect, useRef, useCallback } from "react";
+import { FC, useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import MainLogo from "../../images/main-logo.svg";
 import MenuIcon from "../../images/menu-icon.svg";
@@ -9,25 +9,25 @@ const Header: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggling = () => setIsOpen(!isOpen);
 
-  const onItemClicked = () => {
+  const closeMenu = () => {
     setIsOpen(false);
   };
 
   const element = useRef<HTMLDivElement>(null);
 
-  const handleClick = useCallback((e: MouseEvent) => {
+  const handleClick = useCallback((e: any) => {
     if (element.current && element.current.contains(e.target as HTMLElement)) {
       return;
     }
     setIsOpen(false);
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     document.addEventListener("click", handleClick);
     return () => {
       document.removeEventListener("click", handleClick);
     };
-  }, [handleClick]);
+  }, []);
 
   return (
     <div className="Header">
@@ -38,7 +38,7 @@ const Header: FC = () => {
         <MenuIconStyled>
           <div className="Menu" ref={element}>
             <img onClick={toggling} src={MenuIcon} alt="Menu Icon" />
-            {isOpen && <Menu onItemClicked={onItemClicked} />}
+            {isOpen && <Menu closeMenu={closeMenu} />}
           </div>
         </MenuIconStyled>
       </HeaderStyled>

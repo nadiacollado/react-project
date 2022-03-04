@@ -7,15 +7,11 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 const App: FC = () => {
   return (
     <BrowserRouter>
-      <div>
-        <div>
-          <Header />
-        </div>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/results" element={<Results />} />
-        </Routes>
-      </div>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/results" element={<Results />} />
+      </Routes>
     </BrowserRouter>
   );
 };

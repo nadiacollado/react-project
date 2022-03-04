@@ -13,7 +13,7 @@ export const HeaderStyled = styled.div`
     inset 0px -2.5px 0px #d5d5d3;
 `;
 
-export const MenuStyled = styled("ul")`
+export const MenuStyled = styled.ul`
   display: flex;
   flex-direction: column;
   padding: 16px;
@@ -26,7 +26,7 @@ export const MenuStyled = styled("ul")`
   border-radius: 8px;
 `;
 
-export const MenuItemStyled = styled(MenuItem)`
+export const MenuItemStyled = styled.li`
   list-style: none;
   color: #1a1a19;
   font-family: "Poppins", sans-serif;
@@ -39,6 +39,6 @@ export const MenuItemStyled = styled(MenuItem)`
   margin: 5px 45px 0px 15px;
 `;
 
-export const MenuIconStyled = styled("div")`
+export const MenuIconStyled = styled.div`
   padding-top: 1em;
 `;
