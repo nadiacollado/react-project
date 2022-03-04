@@ -53,3 +53,19 @@ test("clicking menu item routes to correct path", () => {
   fireEvent.click(screen.getByText("My Results"));
   expect(history.location.pathname).toEqual("/results");
 });
+
+test("clicking outside menu closes menu", () => {
+  render(
+    <BrowserRouter>
+      <Header />
+      <button></button>
+    </BrowserRouter>
+  );
+
+  const image = screen.getByRole("img", { name: "Menu Icon" });
+  fireEvent.click(image);
+  expect(screen.getByText("Home")).toBeInTheDocument();
+  const button = screen.getByRole("button");
+  fireEvent.click(button);
+  expect(screen.queryByText("Home")).not.toBeInTheDocument();
+});
