@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, useRef, useCallback, RefObject } from "react";
+import { FC, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import MainLogo from "../../images/main-logo.svg";
 import MenuIcon from "../../images/menu-icon.svg";

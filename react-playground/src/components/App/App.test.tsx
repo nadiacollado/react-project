@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { App } from "../components/App/";
+import { App } from ".";
 
 test("renders a message", () => {
   render(<App />);

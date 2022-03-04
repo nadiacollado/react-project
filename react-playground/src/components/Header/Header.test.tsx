@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { Header } from "../components/Header";
+import { Header } from ".";
 import { Router, BrowserRouter } from "react-router-dom";
 const { createMemoryHistory } = require("history");
 

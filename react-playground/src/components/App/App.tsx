@@ -1,7 +1,7 @@
-import { Header } from "../Header";
+import { Header } from "components/Header";
 import { FC } from "react";
-import Home from "../../Pages/Home";
-import Results from "../../Pages/Results";
+import Home from "pages/Home";
+import Results from "pages/Results";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 const App: FC = () => {
