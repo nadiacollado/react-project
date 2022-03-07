@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { Header } from "../components/Header";
+import { Header } from ".";
 import { Router, BrowserRouter } from "react-router-dom";
 const { createMemoryHistory } = require("history");
 
@@ -12,7 +12,7 @@ test("renders a message", () => {
   expect(screen.getByAltText("Main Logo")).toBeInTheDocument();
 });
 
-test("clicking the menu icon shows/closes the dropdown menu", () => {
+test("clicking menu icon opens/closes the dropdown menu", () => {
   render(
     <BrowserRouter>
       <Header />
@@ -52,4 +52,20 @@ test("clicking menu item routes to correct path", () => {
   expect(screen.getByText("Home")).toBeInTheDocument();
   fireEvent.click(screen.getByText("My Results"));
   expect(history.location.pathname).toEqual("/results");
+});
+
+test("clicking outside menu closes menu", () => {
+  render(
+    <BrowserRouter>
+      <Header />
+      <button></button>
+    </BrowserRouter>
+  );
+
+  const image = screen.getByRole("img", { name: "Menu Icon" });
+  fireEvent.click(image);
+  expect(screen.getByText("Home")).toBeInTheDocument();
+  const button = screen.getByRole("button");
+  fireEvent.click(button);
+  expect(screen.queryByText("Home")).not.toBeInTheDocument();
 });

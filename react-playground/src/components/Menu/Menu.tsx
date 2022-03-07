@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { MenuStyled } from "../Header/Header.styles";
-import { MenuItem } from "../MenuItem";
+import { MenuStyled } from "./Menu.styles";
+import { MenuItem } from "components/MenuItem";
 
 const menu = [
   { name: "Home", route: "/" },
@@ -18,19 +18,17 @@ interface MenuProps {
 
 const Menu: FC<MenuProps> = (props) => {
   return (
-    <div>
-      <MenuStyled>
-        {menu.map((item, index) => {
-          return (
-            <MenuItem
-              item={item}
-              closeMenu={props.closeMenu}
-              key={index}
-            ></MenuItem>
-          );
-        })}
-      </MenuStyled>
-    </div>
+    <MenuStyled>
+      {menu.map((item, index) => {
+        return (
+          <MenuItem
+            item={item}
+            closeMenu={props.closeMenu}
+            key={index}
+          ></MenuItem>
+        );
+      })}
+    </MenuStyled>
   );
 };
 

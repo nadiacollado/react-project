@@ -1,9 +1,10 @@
-import { FC, useState, useEffect, useRef, useCallback } from "react";
+import { FC, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import MainLogo from "../../images/main-logo.svg";
 import MenuIcon from "../../images/menu-icon.svg";
 import { HeaderStyled, MenuIconStyled } from "./Header.styles";
-import { Menu } from "../Menu";
+import { Menu } from "components/Menu";
+import useOnClickOutside from "hooks/useOnClickOutside";
 
 const Header: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,19 +16,7 @@ const Header: FC = () => {
 
   const element = useRef<HTMLDivElement>(null);
 
-  const handleClick = useCallback((e: any) => {
-    if (element.current && element.current.contains(e.target as HTMLElement)) {
-      return;
-    }
-    setIsOpen(false);
-  }, []);
-
-  useEffect(() => {
-    document.addEventListener("click", handleClick);
-    return () => {
-      document.removeEventListener("click", handleClick);
-    };
-  }, []);
+  useOnClickOutside(element, () => closeMenu());
 
   return (
     <div className="Header">
